@@ -1,0 +1,13 @@
+work/cache
+work/chroot
+work/binary
+work/.build/bootstrap
+work/.build/bootstrap_*
+work/.build/binary_chroot
+work/.build/binary_*
+work/.build/chroot_*
+work/.build/config
+work/.lock
+work/chroot.*
+work/binary.*
+work/live-*
