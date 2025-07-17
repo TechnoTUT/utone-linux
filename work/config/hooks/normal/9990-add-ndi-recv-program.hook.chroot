@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 git clone https://github.com/TechnoTUT/ndi-receiver /opt/ndi-receiver
 cd /opt/ndi-receiver
