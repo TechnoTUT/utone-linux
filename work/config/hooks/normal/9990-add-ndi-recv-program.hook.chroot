@@ -1,7 +1,0 @@
-#!/bin/bash
-
-git clone https://github.com/TechnoTUT/ndi-receiver /opt/ndi-receiver
-cd /opt/ndi-receiver
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt

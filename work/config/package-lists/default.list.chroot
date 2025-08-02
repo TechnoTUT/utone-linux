@@ -1,0 +1,14 @@
+network-manager
+openssh-server
+vim
+wget
+tar
+gcc
+g++
+git
+curl
+smbclient
+cifs-utils
+nfs-common
+network-manager
+wpasupplicant

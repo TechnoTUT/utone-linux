@@ -1,0 +1,12 @@
+[Unit]
+Description=NDI Receiver (SDL2)
+After=network.target
+
+[Service]
+ExecStart=/home/user/ndi-tx-start.sh
+WorkingDirectory=/opt/utone-ndi-utils
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target
