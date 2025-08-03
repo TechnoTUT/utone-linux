@@ -18,7 +18,8 @@ systemctl --user start ndi-rx.service
 
 ### NDI送信
 `systemctl --user start ndi-tx.service` を実行すると、キャプチャーボードからの映像をNDI信号として送信します。
-引数を変更する場合は、ホームディレクトリの `ndi-tx-start.sh` を編集し、サービスを起動します。
+引数を変更する場合は、ホームディレクトリの `ndi-tx-start.sh` を編集し、サービスを起動します。  
+初期設定のホスト名は `debian` です。ホスト名を変更するには、`sudo hostnamectl set-hostname <新しいホスト名>` と入力します。
 ```bash
 vim ~/ndi-tx-start.sh
 systemctl --user start ndi-tx.service
