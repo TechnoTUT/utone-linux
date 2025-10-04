@@ -80,10 +80,10 @@ Debian環境で`live-build`をインストールします。
 ```bash
 sudo apt install live-build
 ```
-To build the ISO image, you need to clone this repository and edit the files in `work/config`.  
-このリポジトリをクローンし、`work/config`内を編集します。
+To build the ISO image, you need to clone this repository and edit the files in `work/config`. Make sure to clone with the `--recursive` option.  
+このリポジトリをクローンし、`work/config`内を編集します。`--recursive`オプションを付けてクローンしてください。
 ```bash
-git clone https://github.com/TechnoTUT/utone-linux.git
+git clone https://github.com/TechnoTUT/utone-linux.git --recursive
 cd utone-linux/work
 ```
 Build the ISO image with the following command:  
