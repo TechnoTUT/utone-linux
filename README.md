@@ -92,7 +92,7 @@ isoイメージをビルドします。
 lb config --distribution 'bookworm' --archive-areas 'main non-free non-free-firmware contrib' --bootappend-live 'boot=live components splash persistence' --image-name 'technotut-utone-live'
 sudo lb build
 ```
-Successful execution will create a directory named `live-image-amd64.hybrid.iso` in the `work` directory.  
+Successful execution will create a directory named `technotut-utone-live-amd64.hybrid.iso` in the `work` directory.  
 Retry the build with `sudo lb clean`.  
 ビルドが完了すると、`technotut-utone-live-amd64.hybrid.iso`が生成されます。  
 ビルドをやり直す場合は、`sudo lb clean`を実行します。
