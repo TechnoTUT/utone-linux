@@ -73,6 +73,14 @@ echo "exec ~/kiosk-start.sh" >> ~/.bashrc
 ```
 
 ## How to build - ビルド方法
+To build the ISO image, you need a Debian environment. If you are using Windows, you can easily set up a Debian environment using WSL2.    
+ビルドにはDebian環境が必要です。Windowsを使用している場合は、WSL2を利用することで簡単にDebian環境を構築できます。  
+```pwsh
+wsl --update
+wsl --list --online
+wsl --install -d Debian
+```
+
 Install `live-build` in a Debian environment:  
 Debian環境で`live-build`をインストールします。
 ```bash
