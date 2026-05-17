@@ -1,0 +1,2 @@
+#!/bin/bash
+/opt/utone-ndi-utils/.venv/bin/python /opt/utone-ndi-utils/rx.py "$@"

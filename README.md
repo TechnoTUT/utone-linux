@@ -15,31 +15,31 @@ Insert the completed DVD or USB drive into your PC and power it on to boot into 
 To receive NDI signals, run the following command:  
 NDI信号を受信するには、以下のコマンドを実行します:  
 ```bash
-systemctl --user start ndi-rx.service
+nrx
 ```
 
-To change the connection destination, edit the `.config/systemd/user/ndi-rx.service` in your home directory and start the service:  
-接続先を変更するには、ホームディレクトリの `.config/systemd/user/ndi-rx.service` を編集します: 
+To change the connection destination, edit the `.config/systemd/user/ndi-rx.service` in your home directory and enable the service:  
+接続先を設定して自動起動を有効にするには、ホームディレクトリの `.config/systemd/user/ndi-rx.service` を編集します: 
 
 ```bash
 vim ~/.config/systemd/user/ndi-rx.service
-systemctl --user start ndi-rx.service
+systemctl --user enable --now ndi-rx.service
 ```
 
 ### Transmit NDI - NDI送信
 To transmit NDI signals from a capture board, run the following command:  
 キャプチャーボードからNDI信号を送信するには、以下のコマンドを実行します:  
 ```bash
-systemctl --user start ndi-tx.service
+ntx
 ```
 Transmits NDI signals as `<HOSTNAME> (TX)`.  
 NDI信号を `<HOSTNAME> (TX)` として送信します。
 
-If you want to change arguments such as the transmission name, resolution, or frame rate, edit `.config/systemd/user/ndi-tx.service` in the home directory and start the service. List of arguments can be checked with `uv run /opt/utone-ndi-utils/tx.py --help`.   
-送信名や解像度、フレームレートなどの引数を変更したい場合は、ホームディレクトリの `.config/systemd/user/ndi-tx.service` を編集し、サービスを起動します。引数の一覧は、`uv run /opt/utone-ndi-utils/tx.py --help`で確認できます。  
+If you want to change arguments such as the transmission name, resolution, or frame rate, edit `.config/systemd/user/ndi-tx.service` in the home directory and enable the service. List of arguments can be checked with `uv run /opt/utone-ndi-utils/tx.py --help`.   
+送信名や解像度、フレームレートなどの引数を変更し自動起動を有効にする場合は、ホームディレクトリの `.config/systemd/user/ndi-tx.service` を編集し、サービスを起動します。引数の一覧は、`uv run /opt/utone-ndi-utils/tx.py --help`で確認できます。  
 ```bash
 vim ~/.config/systemd/user/ndi-tx.service
-systemctl --user start ndi-tx.service
+systemctl --user enable --now ndi-tx.service
 ```
 The default hostname is `debian`. To change the hostname, use the command `sudo hostnamectl set-hostname <new hostname>`.  
 初期設定のホスト名は `debian` です。ホスト名を変更するには、`sudo hostnamectl set-hostname <新しいホスト名>` と入力します。
