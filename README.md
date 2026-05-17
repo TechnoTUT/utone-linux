@@ -87,7 +87,7 @@ cd utone-linux/work
 Build the ISO image with the following command:  
 isoイメージをビルドします。
 ```bash
-lb config --distribution 'bookworm' --archive-areas 'main non-free non-free-firmware contrib' --bootappend-live 'boot=live components splash persistence' --image-name 'technotut-utone-live'
+lb config --distribution 'trixie' --archive-areas 'main non-free non-free-firmware contrib' --bootappend-live 'boot=live components splash persistence' --image-name 'technotut-utone-live'
 sudo lb build
 ```
 Successful execution will create a directory named `technotut-utone-live-amd64.hybrid.iso` in the `work` directory.  
