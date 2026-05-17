@@ -17,14 +17,12 @@ NDI信号を受信するには、以下のコマンドを実行します:
 ```bash
 systemctl --user start ndi-rx.service
 ```
-This will start receiving NDI signals from the PC "Yummy".  
-これにより、PC "Yummy" からのNDI信号を受信します。  
 
-To change the connection destination, edit the `ndi-rx-start.sh` in your home directory and start the service:  
-接続先を変更するには、ホームディレクトリの `ndi-rx-start.sh` を編集し、サービスを起動します: 
+To change the connection destination, edit the `.config/systemd/user/ndi-rx.service` in your home directory and start the service:  
+接続先を変更するには、ホームディレクトリの `.config/systemd/user/ndi-rx.service` を編集します: 
 
 ```bash
-vim ~/ndi-rx-start.sh
+vim ~/.config/systemd/user/ndi-rx.service
 systemctl --user start ndi-rx.service
 ```
 
@@ -37,10 +35,10 @@ systemctl --user start ndi-tx.service
 Transmits NDI signals as `<HOSTNAME> (TX)`.  
 NDI信号を `<HOSTNAME> (TX)` として送信します。
 
-If you want to change arguments such as the transmission name, resolution, or frame rate, edit `ndi-tx-start.sh` in the home directory and start the service. List of arguments can be checked with `/opt/utone-ndi-utils/tx.py --help`.   
-送信名や解像度、フレームレートなどの引数を変更したい場合は、ホームディレクトリの `ndi-tx-start.sh` を編集し、サービスを起動します。引数の一覧は、`/opt/utone-ndi-utils/tx.py --help`で確認できます。  
+If you want to change arguments such as the transmission name, resolution, or frame rate, edit `.config/systemd/user/ndi-tx.service` in the home directory and start the service. List of arguments can be checked with `uv run /opt/utone-ndi-utils/tx.py --help`.   
+送信名や解像度、フレームレートなどの引数を変更したい場合は、ホームディレクトリの `.config/systemd/user/ndi-tx.service` を編集し、サービスを起動します。引数の一覧は、`uv run /opt/utone-ndi-utils/tx.py --help`で確認できます。  
 ```bash
-vim ~/ndi-tx-start.sh
+vim ~/.config/systemd/user/ndi-tx.service
 systemctl --user start ndi-tx.service
 ```
 The default hostname is `debian`. To change the hostname, use the command `sudo hostnamectl set-hostname <new hostname>`.  
