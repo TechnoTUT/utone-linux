@@ -1,9 +1,9 @@
 [Unit]
-Description=NDI Receiver (SDL2)
+Description=NDI Sender
 After=network.target
 
 [Service]
-ExecStart=/home/user/ndi-tx-start.sh
+ExecStart=/opt/utone-ndi-utils/.venv/bin/python /opt/utone-ndi-utils/tx.py -x 1280 -y 720 --fps 60 --no-audio
 WorkingDirectory=/opt/utone-ndi-utils
 Restart=always
 RestartSec=3

@@ -1,5 +1,9 @@
 #!/bin/bash
+# Install uv
+export UV_INSTALL_DIR="/usr/local/bin"
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install NDI utilities
 cd /opt/utone-ndi-utils
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+uv venv
+uv pip install -r requirements.txt
