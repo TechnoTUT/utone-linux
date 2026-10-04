@@ -11,3 +11,10 @@ work/.lock
 work/chroot.*
 work/binary.*
 work/live-*
+*.iso
+work/*.iso
+work/*.build
+work/*.log
+work/*.packages
+work/*.contents
+work/*.zsync

@@ -73,6 +73,22 @@ echo "exec ~/kiosk-start.sh" >> ~/.bashrc
 ```
 
 ## How to build - ビルド方法
+### Using Dev Container (Recommended) - Dev Containerを使用する場合 (推奨)
+You can easily build the ISO using VS Code and Dev Containers (Docker/Podman required).  
+VS Code と Dev Containers 拡張機能を使用することで、ホスト環境を汚さずにビルド環境を構築できます（Docker または Podman が必要です）。
+
+1. Open this repository in VS Code. / VS Code でこのリポジトリを開きます。
+2. Click "Reopen in Container" when prompted (or via Command Palette `Ctrl+Shift+P` -> `Dev Containers: Reopen in Container`). / ポップアップまたはコマンドパレットからコンテナ内で再度開きます。
+3. In the terminal inside the container, run: / コンテナ内ターミナルで以下を実行します:
+   ```bash
+   make build
+   ```
+   To clean build artifacts: / クリーンアップする場合:
+   ```bash
+   make clean
+   ```
+
+### Using Debian / WSL2 - 通常のDebian / WSL2環境を使用する場合
 To build the ISO image, you need a Debian environment. If you are using Windows, you can easily set up a Debian environment using WSL2.    
 ビルドにはDebian環境が必要です。Windowsを使用している場合は、WSL2を利用することで簡単にDebian環境を構築できます。  
 ```pwsh
