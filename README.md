@@ -97,24 +97,27 @@ wsl --list --online
 wsl --install -d Debian
 ```
 
-Install `live-build` in a Debian environment:  
-Debian環境で`live-build`をインストールします。
+Install `live-build` and `make` in a Debian environment:  
+Debian環境で`live-build`と`make`をインストールします。
 ```bash
-sudo apt install live-build
+sudo apt update
+sudo apt install live-build make
 ```
-To build the ISO image, you need to clone this repository and edit the files in `work/config`. Make sure to clone with the `--recursive` option.  
-このリポジトリをクローンし、`work/config`内を編集します。`--recursive`オプションを付けてクローンしてください。
+To build the ISO image, clone this repository with the `--recursive` option:  
+このリポジトリを`--recursive`オプションを付けてクローンします。
 ```bash
 git clone https://github.com/TechnoTUT/utone-linux.git --recursive
-cd utone-linux/work
+cd utone-linux
 ```
-Build the ISO image with the following command:  
-isoイメージをビルドします。
+Build the ISO image with `make`:  
+`make` を使って ISO イメージをビルドします。
 ```bash
-lb config --distribution 'trixie' --archive-areas 'main non-free non-free-firmware contrib' --bootappend-live 'boot=live components splash persistence' --image-name 'technotut-utone-live'
-sudo lb build
+make build
 ```
-Successful execution will create a directory named `technotut-utone-live-amd64.hybrid.iso` in the `work` directory.  
-Retry the build with `sudo lb clean`.  
-ビルドが完了すると、`technotut-utone-live-amd64.hybrid.iso`が生成されます。  
-ビルドをやり直す場合は、`sudo lb clean`を実行します。
+Successful execution will create `utone-linux-amd64.hybrid.iso` in the `work` directory.  
+To clean up build artifacts, run `make clean`:  
+ビルドが完了すると、`work` ディレクトリ内に `utone-linux-amd64.hybrid.iso` が生成されます。  
+ビルドをやり直す場合やクリーンアップを行う場合は、`make clean` を実行します。
+```bash
+make clean
+```

@@ -1,6 +1,6 @@
 .PHONY: all config build clean purge submodule help
 
-IMAGE_NAME ?= technotut-utone-live
+IMAGE_NAME ?= utone-linux
 DISTRIBUTION ?= trixie
 ARCHIVE_AREAS ?= main non-free non-free-firmware contrib
 BOOTAPPEND_LIVE ?= boot=live components splash persistence
