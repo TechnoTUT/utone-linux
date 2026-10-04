@@ -7,3 +7,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 cd /opt/utone-ndi-utils
 uv venv
 uv pip install -r requirements.txt
+# Build frontend
+cd /opt/utone-ndi-utils/frontend
+npm install
+npm run build

@@ -1,0 +1,12 @@
+[Unit]
+Description=NDI Web API
+After=network.target
+
+[Service]
+ExecStart=/opt/utone-ndi-utils/.venv/bin/python /opt/utone-ndi-utils/main.py web --host 0.0.0.0 --port 8000
+WorkingDirectory=/opt/utone-ndi-utils
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target
