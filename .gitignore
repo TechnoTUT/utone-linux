@@ -18,3 +18,4 @@ work/*.log
 work/*.packages
 work/*.contents
 work/*.zsync
+work/*.files
