@@ -2,3 +2,4 @@ git
 avahi-daemon
 libgl1-mesa-dev
 nodejs
+npm
