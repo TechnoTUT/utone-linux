@@ -9,6 +9,11 @@ uv venv
 uv pip install -r requirements.txt
 # Build frontend
 cd /opt/utone-ndi-utils/frontend
+sudo npm install -g n
+n stable
+sudo apt remove nodejs npm -y
+export NUXT_TELEMETRY_DISABLED=1
+export CI=1
 npm install
 npm run build
 chmod -R 777 /opt/utone-ndi-utils/data
