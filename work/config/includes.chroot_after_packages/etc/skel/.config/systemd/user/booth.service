@@ -1,0 +1,12 @@
+[Unit]
+Description=Booth Display Controller
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/booth-display/controller/bin/display-controller -config /opt/booth-display/config.yaml
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
