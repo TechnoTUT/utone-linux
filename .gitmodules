@@ -1,3 +1,6 @@
 [submodule "work/config/includes.chroot_after_packages/opt/moip-toolkit"]
 	path = work/config/includes.chroot_after_packages/opt/moip-toolkit
 	url = https://github.com/TechnoTUT/moip-toolkit.git
+[submodule "work/config/includes.chroot_after_packages/opt/booth-display"]
+	path = work/config/includes.chroot_after_packages/opt/booth-display
+	url = https://github.com/TechnoTUT/booth-display.git
