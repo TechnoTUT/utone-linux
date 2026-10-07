@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/opt/moip-toolkit/.venv/bin/python /opt/moip-toolkit/main.py web --host 0.0.0.0 --port 8000
-WorkingDirectory=/opt/utone-ndi-utils
+WorkingDirectory=/opt/moip-toolkit
 Restart=always
 RestartSec=3
 
