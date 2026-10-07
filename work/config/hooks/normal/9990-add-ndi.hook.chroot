@@ -4,11 +4,11 @@ export UV_INSTALL_DIR="/usr/local/bin"
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install NDI utilities
-cd /opt/utone-ndi-utils
+cd /opt/moip-toolkit
 uv venv
 uv pip install -r requirements.txt
 # Build frontend
-cd /opt/utone-ndi-utils/frontend
+cd /opt/moip-toolkit/frontend
 sudo npm install -g n
 n stable
 sudo apt remove nodejs npm -y
@@ -16,4 +16,4 @@ export NUXT_TELEMETRY_DISABLED=1
 export CI=1
 npm install
 npm run build
-chmod -R 777 /opt/utone-ndi-utils/data
+chmod -R 777 /opt/moip-toolkit/data
