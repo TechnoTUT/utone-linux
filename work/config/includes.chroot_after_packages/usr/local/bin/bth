@@ -1,0 +1,2 @@
+#!/bin/bash
+/opt/booth-display/controller/bin/display-controller -config /opt/booth-display/config.yaml

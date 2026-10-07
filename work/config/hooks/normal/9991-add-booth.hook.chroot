@@ -1,0 +1,15 @@
+#!/bin/bash
+# Install frontend dependencies
+cd /opt/booth-display/controller/frontend
+npm install
+
+## Check vainfo
+vainfo
+
+## Build frontend and backend
+cd /opt/booth-display
+make build
+make test
+
+## Setup Python
+make setup-python
