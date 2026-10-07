@@ -1,3 +1,3 @@
-[submodule "work/config/includes.chroot_after_packages/opt/utone-ndi-utils"]
-	path = work/config/includes.chroot_after_packages/opt/utone-ndi-utils
-	url = https://github.com/TechnoTUT/utone-ndi-utils
+[submodule "work/config/includes.chroot_after_packages/opt/moip-toolkit"]
+	path = work/config/includes.chroot_after_packages/opt/moip-toolkit
+	url = https://github.com/TechnoTUT/moip-toolkit.git
