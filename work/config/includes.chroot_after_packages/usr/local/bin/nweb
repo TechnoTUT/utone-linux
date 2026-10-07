@@ -1,2 +1,2 @@
 #!/bin/bash
-/opt/utone-ndi-utils/.venv/bin/python /opt/moip-toolkit/main.py web "$@"
+/opt/booth-display/controller/bin/display-controller -config /opt/booth-display/config.yaml

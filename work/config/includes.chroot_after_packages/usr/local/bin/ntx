@@ -1,2 +1,2 @@
 #!/bin/bash
-/opt/utone-ndi-utils/.venv/bin/python /opt/moip-toolkit/main.py tx "$@"
+/opt/moip-toolkit/.venv/bin/python /opt/moip-toolkit/main.py tx "$@"
