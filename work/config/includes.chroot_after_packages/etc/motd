@@ -12,3 +12,5 @@
 
   Welcome back, TechnoTUT crew!!
   utone-linux is a customised Linux system for "The Utopia Tone".
+
+  Enable moip-toolkit: systemctl --user enable --now ndi-web.service
