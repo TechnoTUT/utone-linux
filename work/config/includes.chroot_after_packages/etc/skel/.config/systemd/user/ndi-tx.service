@@ -3,8 +3,8 @@ Description=NDI Sender
 After=network.target
 
 [Service]
-ExecStart=/opt/utone-ndi-utils/.venv/bin/python /opt/utone-ndi-utils/tx.py -x 1280 -y 720 --fps 60 --no-audio
-WorkingDirectory=/opt/utone-ndi-utils
+ExecStart=/opt/moip-toolkit/.venv/bin/python /opt/moip-toolkit/tx.py -x 1280 -y 720 --fps 60 --no-audio
+WorkingDirectory=/opt/moip-toolkit
 Restart=always
 RestartSec=3
 
