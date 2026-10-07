@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo
+echo "IP Addresses:"
+ip -br addr | awk '$1 != "lo" && $3 != "" {print "  " $1 ": " $3}'
+echo
