@@ -1,15 +1,18 @@
 #!/bin/bash
+# Install NDI runtime (libndi.so.6) from the official NDI SDK for Linux
+# (accepts the NDI SDK license non-interactively)
+cd /opt/booth-display
+NDI_ACCEPT_LICENSE=yes make setup-ndi
+if ! ldconfig -p | grep -q 'libndi\.so\.6 '; then
+    echo "WARNING: libndi.so.6 is not installed; NDI input will be unavailable" >&2
+fi
+
 # Install frontend dependencies
-cd /opt/booth-display/controller/frontend
-npm install
+npm --prefix /opt/booth-display/controller/frontend ci
 
 ## Check vainfo
 vainfo
 
 ## Build frontend and backend
-cd /opt/booth-display
 make build
 make test
-
-## Setup Python
-make setup-python

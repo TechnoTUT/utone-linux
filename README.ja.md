@@ -2,7 +2,7 @@
 
 [English](README.md) | 日本語
 
-このリポジトリは、学内DJイベント "The Utopia Tone" のエッジデバイスを容易に動作させるためのDebian Live環境を提供します。[moip-toolkit](https://github.com/TechnoTUT/moip-toolkit)(NDI送受信とデジタルサイネージ)を含みます。  
+このリポジトリは、学内DJイベント "The Utopia Tone" のエッジデバイスを容易に動作させるためのDebian Live環境を提供します。[moip-toolkit](https://github.com/TechnoTUT/moip-toolkit)(NDI送受信とデジタルサイネージ)と[booth-display](https://github.com/TechnoTUT/booth-display)(ブースディスプレイのコントローラ)を含みます。  
 
 ## 使い方
 [Releases](https://github.com/TechnoTUT/utone-linux/releases)からイメージをダウンロードし、DVDまたはUSBメモリに書き込みます。USBメモリに書き込む場合は、[Rufus](https://rufus.ie/)等のツールを使用します。  
@@ -58,6 +58,20 @@ systemctl --user enable --now ndi-web.service
 ```
 `-i` を省略すると、Web UIから最後にアップロードした画像が表示されます。GUIのないコンソール(TTY)では、`--framebuffer` を付けるとLinuxフレームバッファに直接描画します(root権限が必要な場合があります)。  
 詳細は [moip-toolkit の README](https://github.com/TechnoTUT/moip-toolkit) を参照してください。
+
+### ブースディスプレイ
+[booth-display](https://github.com/TechnoTUT/booth-display) のコントローラは、テストパターン、動画ファイル、NDIソースをタイル状に並べたブースディスプレイへ配信します。以下のコマンドで起動します:  
+```bash
+bth
+```
+自動起動を有効にするには、サービスを有効化します:  
+```bash
+systemctl --user enable --now booth.service
+```
+ブラウザで `http://<IPアドレス>:8080/` を開くとWeb GUIを利用できます。各ディスプレイの宛先やクロップ位置は `/opt/booth-display/config.yaml` で設定します。  
+
+NDI入力には、公式NDI SDK for LinuxのNDIランタイム(`libndi.so.6`)を使用します。ISOのビルド時にSDKをダウンロードし、ライセンスに同意したうえで `/usr/local/lib` にランタイムをインストールします。  
+詳細は [booth-display の README](https://github.com/TechnoTUT/booth-display) を参照してください。
 
 ## ビルド方法
 ### Dev Containerを使用する場合 (推奨)

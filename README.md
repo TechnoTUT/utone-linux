@@ -2,7 +2,7 @@
 
 English | [日本語](README.ja.md)
 
-This repository provides a Debian Live environment to easily run edge devices for the on-campus DJ event "The Utopia Tone". It includes [moip-toolkit](https://github.com/TechnoTUT/moip-toolkit) (NDI receive/transmit and digital signage).  
+This repository provides a Debian Live environment to easily run edge devices for the on-campus DJ event "The Utopia Tone". It includes [moip-toolkit](https://github.com/TechnoTUT/moip-toolkit) (NDI receive/transmit and digital signage) and [booth-display](https://github.com/TechnoTUT/booth-display) (booth display controller).  
 
 ## How to use
 Download the image from [Releases](https://github.com/TechnoTUT/utone-linux/releases) and write it to a DVD or USB drive. To write to a USB drive, use a tool like [Rufus](https://rufus.ie/).  
@@ -58,6 +58,20 @@ You can also show an image directly from the command line:
 ```
 If `-i` is omitted, the most recent image uploaded via the Web UI is shown. On a console without a GUI (TTY), add `--framebuffer` to draw directly to the Linux framebuffer (root privileges may be required).  
 See the [moip-toolkit README](https://github.com/TechnoTUT/moip-toolkit) for details.
+
+### Booth display
+The [booth-display](https://github.com/TechnoTUT/booth-display) controller streams test patterns, video files or NDI sources to the tiled booth displays. Start it with:  
+```bash
+bth
+```
+To start it automatically, enable the service:  
+```bash
+systemctl --user enable --now booth.service
+```
+Open `http://<IP address>:8080/` in a browser to use the Web GUI. Display addresses and crop positions are set in `/opt/booth-display/config.yaml`.  
+
+NDI input uses the NDI runtime (`libndi.so.6`) from the official NDI SDK for Linux. The ISO build downloads the SDK, accepts its license and installs the runtime to `/usr/local/lib`.  
+See the [booth-display README](https://github.com/TechnoTUT/booth-display) for details.
 
 ## How to build
 ### Using Dev Container (Recommended)
