@@ -2,7 +2,7 @@
 
 English | [日本語](README.ja.md)
 
-This repository provides a Debian Live environment to easily run edge devices for the on-campus DJ event "The Utopia Tone". It includes [utone-ndi-utils](https://github.com/TechnoTUT/utone-ndi-utils) and an automatic signage system.  
+This repository provides a Debian Live environment to easily run edge devices for the on-campus DJ event "The Utopia Tone". It includes [moip-toolkit](https://github.com/TechnoTUT/moip-toolkit) (NDI receive/transmit and digital signage).  
 
 ## How to use
 Download the image from [Releases](https://github.com/TechnoTUT/utone-linux/releases) and write it to a DVD or USB drive. To write to a USB drive, use a tool like [Rufus](https://rufus.ie/).  
@@ -38,7 +38,7 @@ ntx
 ```
 Transmits NDI signals as `<HOSTNAME> (TX)`.  
 
-If you want to change arguments such as the transmission name, resolution, or frame rate, edit `.config/systemd/user/ndi-tx.service` in the home directory and enable the service. List of arguments can be checked with `uv run /opt/utone-ndi-utils/tx.py --help`.   
+If you want to change arguments such as the transmission name, resolution, or frame rate, edit `.config/systemd/user/ndi-tx.service` in the home directory and enable the service. List of arguments can be checked with `ntx --help`.   
 ```bash
 vim ~/.config/systemd/user/ndi-tx.service
 systemctl --user enable --now ndi-tx.service
@@ -46,27 +46,18 @@ systemctl --user enable --now ndi-tx.service
 The default hostname is `debian`. To change the hostname, use the command `sudo hostnamectl set-hostname <new hostname>`.  
 
 ### Signage
-After booting, you will need to configure Wi-Fi and enter NAS credentials.  
+Signage is provided by moip-toolkit. Start the Web UI service, then upload an image from your browser to show it fullscreen on the connected display:  
 ```bash
-sudo nmtui
-vim .smbcredentials
+systemctl --user enable --now ndi-web.service
 ```
-To change the NAS IP address, edit `kiosk-start.sh` in your home directory:  
+Open `http://<IP address>:8000/` in a browser (the IP address is shown at login). To keep the setting after reboot, use persistent storage.  
+
+You can also show an image directly from the command line:  
 ```bash
-vim kiosk-start.sh
+/opt/moip-toolkit/.venv/bin/python /opt/moip-toolkit/main.py signage -i /path/to/image.png --fullscreen
 ```
-To start the signage, run the `kiosk-start.sh` script in your home directory:  
-```bash
-./kiosk-start.sh
-```
-To enable automatic startup, add the following line to your `.bashrc` file:  
-```bash
-exec ~/kiosk-start.sh
-```
-To append this line in one command, you can run:  
-```bash
-echo "exec ~/kiosk-start.sh" >> ~/.bashrc
-```
+If `-i` is omitted, the most recent image uploaded via the Web UI is shown. On a console without a GUI (TTY), add `--framebuffer` to draw directly to the Linux framebuffer (root privileges may be required).  
+See the [moip-toolkit README](https://github.com/TechnoTUT/moip-toolkit) for details.
 
 ## How to build
 ### Using Dev Container (Recommended)

@@ -2,7 +2,7 @@
 
 [English](README.md) | 日本語
 
-このリポジトリは、学内DJイベント "The Utopia Tone" のエッジデバイスを容易に動作させるためのDebian Live環境を提供します。[utone-ndi-utils](https://github.com/TechnoTUT/utone-ndi-utils)や、自動サイネージシステムを含みます。  
+このリポジトリは、学内DJイベント "The Utopia Tone" のエッジデバイスを容易に動作させるためのDebian Live環境を提供します。[moip-toolkit](https://github.com/TechnoTUT/moip-toolkit)(NDI送受信とデジタルサイネージ)を含みます。  
 
 ## 使い方
 [Releases](https://github.com/TechnoTUT/utone-linux/releases)からイメージをダウンロードし、DVDまたはUSBメモリに書き込みます。USBメモリに書き込む場合は、[Rufus](https://rufus.ie/)等のツールを使用します。  
@@ -38,7 +38,7 @@ ntx
 ```
 NDI信号を `<HOSTNAME> (TX)` として送信します。
 
-送信名や解像度、フレームレートなどの引数を変更し自動起動を有効にする場合は、ホームディレクトリの `.config/systemd/user/ndi-tx.service` を編集し、サービスを起動します。引数の一覧は、`uv run /opt/utone-ndi-utils/tx.py --help`で確認できます。  
+送信名や解像度、フレームレートなどの引数を変更し自動起動を有効にする場合は、ホームディレクトリの `.config/systemd/user/ndi-tx.service` を編集し、サービスを起動します。引数の一覧は、`ntx --help`で確認できます。  
 ```bash
 vim ~/.config/systemd/user/ndi-tx.service
 systemctl --user enable --now ndi-tx.service
@@ -46,27 +46,18 @@ systemctl --user enable --now ndi-tx.service
 初期設定のホスト名は `debian` です。ホスト名を変更するには、`sudo hostnamectl set-hostname <新しいホスト名>` と入力します。
 
 ### サイネージ
-起動後、Wi-Fiの設定とNASの資格情報の入力が必要です。  
+サイネージ機能は moip-toolkit が提供します。Web UIのサービスを起動し、ブラウザから画像をアップロードすると、接続されたディスプレイに全画面で表示されます。  
 ```bash
-sudo nmtui
-vim .smbcredentials
+systemctl --user enable --now ndi-web.service
 ```
-NASのIPアドレスを変更するには、ホームディレクトリの `kiosk-start.sh` を編集します。
+ブラウザで `http://<IPアドレス>:8000/` を開きます(IPアドレスはログイン時に表示されます)。再起動後も設定を保持するには、保存領域を使用します。  
+
+コマンドラインから直接画像を表示することもできます。  
 ```bash
-vim kiosk-start.sh
+/opt/moip-toolkit/.venv/bin/python /opt/moip-toolkit/main.py signage -i /path/to/image.png --fullscreen
 ```
-サイネージを起動するには、ホームディレクトリの `kiosk-start.sh` を実行します。
-```bash
-./kiosk-start.sh
-```
-自動起動を設定するには、`.bashrc` に以下の行を追加します。
-```bash
-exec ~/kiosk-start.sh
-```
-ワンライナーで追記するには、以下のコマンドを実行します。
-```bash
-echo "exec ~/kiosk-start.sh" >> ~/.bashrc
-```
+`-i` を省略すると、Web UIから最後にアップロードした画像が表示されます。GUIのないコンソール(TTY)では、`--framebuffer` を付けるとLinuxフレームバッファに直接描画します(root権限が必要な場合があります)。  
+詳細は [moip-toolkit の README](https://github.com/TechnoTUT/moip-toolkit) を参照してください。
 
 ## ビルド方法
 ### Dev Containerを使用する場合 (推奨)
