@@ -1,2 +1,2 @@
 #!/bin/bash
-/opt/booth-display/controller/bin/display-controller -config /opt/booth-display/config.yaml
+/opt/moip-toolkit/.venv/bin/python /opt/moip-toolkit/main.py web "$@"
