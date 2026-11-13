@@ -3,7 +3,7 @@ Description=NDI Receiver (SDL2)
 After=network.target
 
 [Service]
-ExecStart=/opt/moip-toolkit/.venv/bin/python /opt/moip-toolkit/rx.py -s "__SOURCE_NAME__" --fullscreen
+ExecStart=/opt/moip-toolkit/.venv/bin/python /opt/moip-toolkit/main.py rx -s "__SOURCE_NAME__" --fullscreen --video-driver kmsdrm
 WorkingDirectory=/opt/moip-toolkit
 Restart=always
 RestartSec=3

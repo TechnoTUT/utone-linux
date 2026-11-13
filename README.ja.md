@@ -23,6 +23,14 @@ vim ~/.config/systemd/user/ndi-rx.service
 systemctl --user enable --now ndi-rx.service
 ```
 
+`ndi-rx.service` は初期設定で `kmsdrm` ビデオドライバを使用し、デスクトップのコンポジタを経由せずにディスプレイへ直接出力して遅延を最小にします。デスクトップのコンポジタを使う場合は、`ExecStart` から `--video-driver kmsdrm` を削除します。手動でkmsdrmを使って実行するには:  
+```bash
+uv run /opt/moip-toolkit/main.py rx -s "<NDIソース名>" --video-driver kmsdrm
+```
+- 対象のディスプレイでデスクトップセッションが動作していない必要があります(コンソール / TTY の状態)。`sudo systemctl set-default multi-user.target` でGUIなしで起動するようになります。
+- ユーザーを `video` と `input` グループに追加します: `sudo usermod -aG video,input $USER`
+- 出力は常に全画面になります。
+
 ### NDI送信
 キャプチャーボードからNDI信号を送信するには、以下のコマンドを実行します:  
 ```bash

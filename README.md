@@ -23,6 +23,14 @@ vim ~/.config/systemd/user/ndi-rx.service
 systemctl --user enable --now ndi-rx.service
 ```
 
+`ndi-rx.service` uses the `kmsdrm` video driver by default, which bypasses the desktop compositor and renders directly to the display for the lowest latency. To use the desktop compositor instead, remove `--video-driver kmsdrm` from the `ExecStart` line. To run it manually with kmsdrm:  
+```bash
+uv run /opt/moip-toolkit/main.py rx -s "<NDI Source Name>" --video-driver kmsdrm
+```
+- No desktop session may be running on that display (console / TTY state). `sudo systemctl set-default multi-user.target` makes the machine boot without a GUI.
+- Add the user to the `video` and `input` groups: `sudo usermod -aG video,input $USER`
+- Output is always fullscreen.
+
 ### Transmit NDI
 To transmit NDI signals from a capture board, run the following command:  
 ```bash
